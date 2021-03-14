@@ -9,6 +9,7 @@
   "dependencies": {
     "array-move": "^3.0.1",
     "html-react-parser": "^1.0.0",
+    "katex": "^0.13.0",
     "next": "^10.0.8",
     "react": "16.13.1",
     "react-beautiful-dnd": "^13.0.0",

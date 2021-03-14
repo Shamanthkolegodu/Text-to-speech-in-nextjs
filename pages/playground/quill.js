@@ -6,17 +6,22 @@ import Layout from "../../components/layout";
 import "react-quill/dist/quill.core.css";
 import "react-quill/dist/quill.snow.css";
 
+import 'katex/dist/katex.min.css'
+
 let ReactQuill = null;
+let katex = null;
 
 if (typeof window !== "undefined") {
   // dynamic loads library on demand
   // check react lazy
   ReactQuill = dynamic(() => import("react-quill"));
+  katex = require('katex');
+
+  window.katex = katex;
 }
 
 export default function Quill() {
   const [evalue, setEvalue] = useState("");
-  const [ob, setOb] = useState("asdasd");
 
   return (
     <Layout>
@@ -52,7 +57,7 @@ export default function Quill() {
                   { indent: "+1" },
                 ],
                 ["link", "image"],
-                ["code-block"],
+                ["formula", "code-block"],
                 [{ script: "super" }, { script: "sub" }],
               ],
               history: {
