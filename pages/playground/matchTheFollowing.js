@@ -1,43 +1,110 @@
-import arrayMove from 'array-move';
-import Head from "next/head";
-import React, { Component } from 'react';
-import { SortableContainer, SortableElement } from 'react-sortable-hoc';
+/**
+ * Assumption:
+ * LHS and RHS list do not change at runtime
+ *
+ * State Variables:
+ * 1. To keep track of current selection
+ * 2. LHS Individual Item  = [ destination ids ]
+ *
+ * Components:
+ * 1. Main Layout: Stacks: LHS and RHS
+ * 2. Individual Lists Items Containers
+ *      a. Image
+ *      b. Text
+ *      c. Math Equations
+ *      d. Audio Clips
+ *
+ * Functionality:
+ * 1. Auto Jumble - each rendering
+ * 2. Check Sanity of the input: LHS, RHS
+ */
 
+import MatchTheFollowingContainer from "../../components/matchTheFollowingContainer";
+import { ItemType } from "../../constants/itemTypes";
 
-const SortableItem = SortableElement(({ value }) =>
-  <li className="SortableItem">{value}</li>
-);
+const LHS = [
+  {
+    id: "111",
+    type: ItemType.TEXT,
+    text: "Tiger",
+  },
+  {
+    id: "222",
+    type: ItemType.TEXT,
+    text: "Lion",
+  },
+  {
+    id: "333",
+    type: ItemType.TEXT,
+    text: "Elephant",
+  },
+  {
+    id: "444",
+    type: ItemType.TEXT,
+    text: "Zebra",
+  },
+  {
+    id: "555",
+    type: ItemType.TEXT,
+    text: "Monkey",
+  },
+];
 
-const SortableList = SortableContainer(({ items }) => {
-  return (
-    <ul className="SortableList">
-      {items.map((value, index) => (
-        <SortableItem key={`item-${index}`} index={index} value={value} />
-      ))}
-    </ul>
-  );
-});
+const RHS123 = [
+  {
+    id: "aaa",
+    type: ItemType.TEXT,
+    text: "Tiger",
+  },
+  {
+    id: "bbb",
+    type: ItemType.TEXT,
+    text: "Lion",
+  },
+  {
+    id: "ccc",
+    type: ItemType.TEXT,
+    text: "Elephant",
+  },
+  {
+    id: "ddd",
+    type: ItemType.TEXT,
+    text: "Zebra",
+  },
+  {
+    id: "fff",
+    type: ItemType.TEXT,
+    text: "Monkey",
+  },
+];
 
-class MatchTheFollowing extends Component {
-  state = {
-    items: ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6'],
-  };
-  onSortEnd = ({ oldIndex, newIndex }) => {
-    this.setState(({ items }) => ({
-      items: arrayMove(items, oldIndex, newIndex),
-    }));
-  };
-  render() {
-    return (
-      <span>
-        <Head>
-          <title>Match The Following</title>
-        </Head>
-        <h1 className="title">Match The Following</h1>
-        <SortableList items={this.state.items} onSortEnd={this.onSortEnd} helperClass="SortableHelper" />
-      </span>
-    );
-  }
+const RHS = [
+  {
+    id: "aaa",
+    type: ItemType.IMAGE,
+    imgSource:
+      "https://images.freeimages.com/images/large-previews/66d/tiger-1388270.jpg",
+  },
+  {
+    id: "bbb",
+    type: ItemType.IMAGE,
+    imgSource:
+      "https://images.freeimages.com/images/large-previews/3e1/elephant-1361859.jpg",
+  },
+  {
+    id: "ccc",
+    type: ItemType.IMAGE,
+    imgSource:
+      "https://images.freeimages.com/images/large-previews/6c9/lion-1402323.jpg",
+  },
+  {
+    id: "ddd",
+    type: ItemType.IMAGE,
+    imgSource:
+      "https://images.freeimages.com/images/large-previews/f41/zebra-1393530.jpg",
+  },
+];
+
+export default function matchTheFollowing() {
+  return <MatchTheFollowingContainer LHS={LHS} RHS={RHS} />;
 }
-
-export default MatchTheFollowing

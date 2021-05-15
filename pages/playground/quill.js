@@ -6,7 +6,7 @@ import Layout from "../../components/layout";
 import "react-quill/dist/quill.core.css";
 import "react-quill/dist/quill.snow.css";
 
-import 'katex/dist/katex.min.css'
+import "katex/dist/katex.min.css";
 
 let ReactQuill = null;
 let katex = null;
@@ -15,7 +15,7 @@ if (typeof window !== "undefined") {
   // dynamic loads library on demand
   // check react lazy
   ReactQuill = dynamic(() => import("react-quill"));
-  katex = require('katex');
+  katex = require("katex");
 
   window.katex = katex;
 }
