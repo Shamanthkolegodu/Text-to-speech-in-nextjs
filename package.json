@@ -11,7 +11,7 @@
     "html-react-parser": "^1.0.0",
     "katex": "^0.13.0",
     "mathquill": "^0.10.1-a",
-    "next": "^10.0.8",
+    "next": "^10.2.3",
     "react": "16.13.1",
     "react-archer": "^3.2.0",
     "react-beautiful-dnd": "^13.0.0",
