@@ -7,6 +7,7 @@
     "start": "next start -p $PORT"
   },
   "dependencies": {
+    "@tinymce/tinymce-react": "^3.12.6",
     "array-move": "^3.0.1",
     "html-react-parser": "^1.0.0",
     "katex": "^0.13.0",
