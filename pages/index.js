@@ -42,14 +42,14 @@ import { Editor } from '@tinymce/tinymce-react';
 
 function Speak(){
   const editorRef = useRef(null);
-   const log = () => {
+   const play = () => {
      if (editorRef.current) {
       var text=editorRef.current.getContent();
       text=text.substring(3, text.length-4);
       var voices = speechSynthesis.getVoices();
 
       let working = new SpeechSynthesisUtterance(text); 
-      working.voice = voices[1]; //Change value of int to get different voices
+      working.voice = voices[0]; //Change value of int to get different voices
       working.rate=0.8;
       window.speechSynthesis.speak(working);
       console.log(text);
@@ -75,7 +75,7 @@ function Speak(){
            content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
          }}
        />
-       <button onClick={log}>Log editor content</button>
+       <button onClick={play}>Play</button>
      </>
    );
 
