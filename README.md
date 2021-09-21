@@ -1,4 +1,4 @@
-# nextjs-playground
+# Text to speech in nextjs
 Trying some things out with nextjs
 
 # Play button which converts text to speech
